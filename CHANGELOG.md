@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 1.8.8
+
+### Patch Changes
+
+- 7bff7ef: upgrade webpack config and ignore size-plugin file
+
 ## 1.8.7
 
 ### Patch Changes
