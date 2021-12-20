@@ -136,7 +136,9 @@ const prod = {
         ]
       : []),
     new CompressionPlugin(),
-    new SizePlugin(),
+    new SizePlugin({
+      writeFile: false,
+    }),
     new WebpackBar({
       profile: true,
     }),
