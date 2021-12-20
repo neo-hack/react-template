@@ -140,6 +140,5 @@
     "commitizen": {
       "path": "cz-emoji"
     }
-  },
-  "gitHead": "8d1f23440ab011812cba747468cd2e4c5c36a9e4"
+  }
 }
