@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const ThreadLoader = require('thread-loader')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
@@ -8,8 +7,6 @@ const { merge } = require('webpack-merge')
 const configs = require('./config')
 const common = require('./webpack.common.config')
 const port = 8080
-
-ThreadLoader.warmup(configs.workerpool, ['ts-loader', 'babel-loader'])
 
 /**
  * @type import('webpack').Configuration

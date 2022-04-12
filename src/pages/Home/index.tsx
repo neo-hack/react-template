@@ -13,7 +13,7 @@ const Home = (props: PageProps) => {
   console.log(props)
   return (
     <div>
-      this is new home page reload1
+      this is new home page reload
       {data?.map((v) => (
         <span key={v}>{v}-1</span>
       ))}

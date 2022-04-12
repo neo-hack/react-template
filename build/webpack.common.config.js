@@ -28,16 +28,10 @@ const common = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'thread-loader',
-            options: configs.workerpool,
-          },
-          { loader: 'babel-loader' },
-          {
-            loader: 'ts-loader',
+            loader: 'esbuild-loader',
             options: {
-              // IMPORTANT! use happyPackMode mode to speed-up compilation and reduce errors reported to webpack
-              transpileOnly: true,
-              happyPackMode: true,
+              loader: 'tsx',
+              target: 'es2015',
             },
           },
         ],
