@@ -22,17 +22,17 @@ const dev = {
     filename: '[name].js',
     publicPath: '/',
   },
+  stats: 'errors-only',
+  cache: true,
+  infrastructureLogging: {
+    level: 'none',
+  },
   devServer: {
     port,
-    watchContentBase: true,
-    contentBase: configs.path.public,
-    hot: true,
-    stats: 'errors-only',
-    inline: true,
-    compress: true,
-    clientLogLevel: 'silent',
-    noInfo: true,
-    public: `http://localhost:${port}`,
+    static: {
+      publicPath: `http://localhost:${port}`,
+      watch: true,
+    },
     proxy: {
       '/proxy': {
         target: 'http://localhost:3000/',

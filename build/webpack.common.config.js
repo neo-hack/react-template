@@ -27,7 +27,6 @@ const common = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'cache-loader' },
           {
             loader: 'thread-loader',
             options: configs.workerpool,
