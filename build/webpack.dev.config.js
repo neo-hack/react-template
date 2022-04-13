@@ -47,30 +47,19 @@ const dev = {
         use: [
           { loader: 'style-loader' },
           {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
-              namedExport: true,
-              silent: true,
-            },
+            loader: '@teamsupercell/typings-for-css-modules-loader',
           },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
       },
       {
         test: /(\.styl$|\.stylus$)/,
         use: [
           { loader: 'style-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
           {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
-              namedExport: true,
-              silent: true,
-            },
+            loader: '@teamsupercell/typings-for-css-modules-loader',
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           {
@@ -87,6 +76,7 @@ const dev = {
     ],
   },
   plugins: [
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/, /styl\.d\.ts$/]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/template.html',

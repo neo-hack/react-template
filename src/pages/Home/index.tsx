@@ -12,7 +12,7 @@ const Home = (props: PageProps) => {
   const { data } = useSWR('fake-data', api.fake.list, { refreshInterval: 1000 })
   console.log(props)
   return (
-    <div>
+    <div className="text-red-500">
       this is new home page reload
       {data?.map((v) => (
         <span key={v}>{v}-1</span>

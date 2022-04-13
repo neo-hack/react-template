@@ -18,5 +18,6 @@ module.exports = {
         autoprefixer: false,
       },
     ],
+    'tailwindcss',
   ],
 }
