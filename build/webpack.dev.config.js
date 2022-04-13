@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
@@ -25,6 +25,7 @@ const dev = {
     level: 'none',
   },
   devServer: {
+    host: '0.0.0.0',
     port,
     static: {
       publicPath: `http://localhost:${port}`,
@@ -76,7 +77,9 @@ const dev = {
     ],
   },
   plugins: [
-    new webpack.WatchIgnorePlugin([/css\.d\.ts$/, /styl\.d\.ts$/]),
+    new webpack.WatchIgnorePlugin({
+      paths: [/css\.d\.ts$/, /styl\.d\.ts$/],
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/template.html',
