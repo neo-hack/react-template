@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@aiou/eslint-config': 0.5.1
+  '@babel/core': ^7.17.9
   '@changesets/cli': 2.22.0
   '@rematch/core': 2.2.0
   '@soda/friendly-errors-webpack-plugin': 1.8.1
@@ -61,7 +62,7 @@ specifiers:
   rucksack-css: 1.0.2
   rupture: 0.7.1
   size-plugin: ~3.0.0
-  style-loader: ^3.3.1
+  style-loader: 3.3.1
   stylus: 0.57.0
   stylus-loader: 6.2.0
   stylus-supremacy: 2.15.0
@@ -97,6 +98,7 @@ dependencies:
 
 devDependencies:
   '@aiou/eslint-config': 0.5.1_f11458f3b5a9aac7eb7b6e83671a32b3
+  '@babel/core': 7.17.9
   '@changesets/cli': 2.22.0
   '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.72.0
   '@teamsupercell/typings-for-css-modules-loader': 2.5.1
@@ -154,12 +156,12 @@ devDependencies:
   tailwindcss: 3.0.24
   terser-webpack-plugin: 5.3.1_webpack@5.72.0
   ts-import-plugin: 2.0.0_typescript@4.6.3
-  ts-jest: 27.1.4_9985e1834e803358b7be1e6ce5ca0eea
+  ts-jest: 27.1.4_1a7a295883fc72da5121c34ec472fa0c
   ts-loader: 9.2.8_typescript@4.6.3+webpack@5.72.0
   tslib: 2.3.1
   typescript: 4.6.3
   typings-for-css-modules-loader: 1.7.0_css-loader@6.7.1
-  umi-serve: 1.9.10
+  umi-serve: 1.9.10_@babel+core@7.17.9
   url-loader: 4.1.1_webpack@5.72.0
   webpack: 5.72.0_webpack-cli@4.9.2
   webpack-bundle-analyzer: 4.5.0
@@ -365,12 +367,13 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /@babel/helper-create-class-features-plugin/7.17.9:
+  /@babel/helper-create-class-features-plugin/7.17.9_@babel+core@7.17.9:
     resolution: {integrity: sha512-kUjip3gruz6AJKOq5i3nC6CoCEEF/oHH3cp6tOZhB+IyyyPyW0g1Gfsxn3mkk6S08pIA2y8GQh609v9G/5sHVQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
+      '@babel/core': 7.17.9
       '@babel/helper-annotate-as-pure': 7.16.7
       '@babel/helper-environment-visitor': 7.16.7
       '@babel/helper-function-name': 7.17.9
@@ -966,15 +969,6 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
     dev: true
 
-  /@babel/plugin-syntax-typescript/7.16.7:
-    resolution: {integrity: sha512-YhUIJHHGkqPgEcMYkPCKTyGUdoGKWtopIycQyjJH8OjvRgOYsXsaKehLVPScKJWAULPxMa4N1vCe6szREFlZ7A==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/helper-plugin-utils': 7.16.7
-    dev: true
-
   /@babel/plugin-syntax-typescript/7.16.7_@babel+core@7.17.9:
     resolution: {integrity: sha512-YhUIJHHGkqPgEcMYkPCKTyGUdoGKWtopIycQyjJH8OjvRgOYsXsaKehLVPScKJWAULPxMa4N1vCe6szREFlZ7A==}
     engines: {node: '>=6.9.0'}
@@ -1379,15 +1373,16 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
     dev: true
 
-  /@babel/plugin-transform-typescript/7.16.8:
+  /@babel/plugin-transform-typescript/7.16.8_@babel+core@7.17.9:
     resolution: {integrity: sha512-bHdQ9k7YpBDO2d0NVfkj51DpQcvwIzIusJ7mEUaMlbZq3Kt/U47j24inXZHQ5MDiYpCs+oZiwnXyKedE8+q7AQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/helper-create-class-features-plugin': 7.17.9
+      '@babel/core': 7.17.9
+      '@babel/helper-create-class-features-plugin': 7.17.9_@babel+core@7.17.9
       '@babel/helper-plugin-utils': 7.16.7
-      '@babel/plugin-syntax-typescript': 7.16.7
+      '@babel/plugin-syntax-typescript': 7.16.7_@babel+core@7.17.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1474,22 +1469,24 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.16.7_@babel+core@7.4.5
     dev: true
 
-  /@babel/preset-typescript/7.3.3:
+  /@babel/preset-typescript/7.3.3_@babel+core@7.17.9:
     resolution: {integrity: sha512-mzMVuIP4lqtn4du2ynEfdO0+RYcslwrZiJHXu4MGaC1ctJiW2fyaeDrtjJGs7R/KebZ1sgowcIoWf4uRpEfKEg==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
+      '@babel/core': 7.17.9
       '@babel/helper-plugin-utils': 7.16.7
-      '@babel/plugin-transform-typescript': 7.16.8
+      '@babel/plugin-transform-typescript': 7.16.8_@babel+core@7.17.9
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@babel/register/7.4.4:
+  /@babel/register/7.4.4_@babel+core@7.17.9:
     resolution: {integrity: sha512-sn51H88GRa00+ZoMqCVgOphmswG4b7mhf9VOB0LUBAieykq2GnRFerlN+JQkO/ntT7wz4jaHNSRPg9IdMPEUkA==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
+      '@babel/core': 7.17.9
       core-js: 3.21.1
       find-cache-dir: 2.1.0
       lodash: 4.17.21
@@ -11667,7 +11664,7 @@ packages:
       typescript: 4.6.3
     dev: true
 
-  /ts-jest/27.1.4_9985e1834e803358b7be1e6ce5ca0eea:
+  /ts-jest/27.1.4_1a7a295883fc72da5121c34ec472fa0c:
     resolution: {integrity: sha512-qjkZlVPWVctAezwsOD1OPzbZ+k7zA5z3oxII4dGdZo5ggX/PL7kvwTM0pXTr10fAtbiVpJaL3bWd502zAhpgSQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
@@ -11688,6 +11685,7 @@ packages:
       esbuild:
         optional: true
     dependencies:
+      '@babel/core': 7.17.9
       '@types/jest': 27.4.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
@@ -11840,11 +11838,11 @@ packages:
       loader-utils: 0.2.16
     dev: true
 
-  /umi-core/1.9.9:
+  /umi-core/1.9.9_@babel+core@7.17.9:
     resolution: {integrity: sha512-gxaZBKIQh9xHIBL/9r1SJNqZzDI4SdsTu1visUfh2QSOTWPM3YMPg2nRSEWY0AmlL5vHy2zd8jUHH1dWImlU5w==}
     dependencies:
-      '@babel/preset-typescript': 7.3.3
-      '@babel/register': 7.4.4
+      '@babel/preset-typescript': 7.3.3_@babel+core@7.17.9
+      '@babel/register': 7.4.4_@babel+core@7.17.9
       '@umijs/error-code-map': 1.0.1
       babel-preset-umi: 1.8.4
       chalk: 2.4.2
@@ -11872,12 +11870,12 @@ packages:
       umi-utils: 1.7.2
     dev: true
 
-  /umi-serve/1.9.10:
+  /umi-serve/1.9.10_@babel+core@7.17.9:
     resolution: {integrity: sha512-exX2HSiXyoPDG8YvydlG9QOSKkawhXVrji6yKrmvNEvJ1dDRuJ4Fyv0NrlNhYOsq+TOq8bTUCCsgRCePrGt58w==}
     hasBin: true
     dependencies:
-      '@babel/preset-typescript': 7.3.3
-      '@babel/register': 7.4.4
+      '@babel/preset-typescript': 7.3.3_@babel+core@7.17.9
+      '@babel/register': 7.4.4_@babel+core@7.17.9
       babel-plugin-module-resolver: 3.1.1
       babel-preset-umi: 1.8.4
       boxen: 2.1.0
@@ -11886,7 +11884,7 @@ packages:
       compression: 1.7.4
       express: 4.17.1
       serve-static: 1.14.1
-      umi-core: 1.9.9
+      umi-core: 1.9.9_@babel+core@7.17.9
       umi-mock: 2.1.4
       umi-utils: 1.7.2
       update-notifier: 3.0.0

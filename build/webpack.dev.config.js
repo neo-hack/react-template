@@ -25,6 +25,8 @@ const dev = {
     level: 'none',
   },
   devServer: {
+    hot: true,
+    liveReload: true,
     host: '0.0.0.0',
     port,
     static: {

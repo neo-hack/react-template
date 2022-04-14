@@ -4,18 +4,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { RootState, Dispatch } from '@/typings/rematch'
+import { RootState, Dispatch } from '@/store'
 
 const mapState = (state: RootState) => {
   return {
-    common: state.common,
+    count: state.count,
   }
 }
 
-const mapDispatch = ({ common }: Dispatch) => {
+const mapDispatch = ({ count }: Dispatch) => {
   return {
-    increment: () => common.increment(1),
-    incrementAsync: () => common.incrementAsync(1),
+    increment: () => count.increment(1),
+    incrementAsync: () => count.incrementAsync(1),
   }
 }
 
@@ -23,7 +23,7 @@ type CountProps = Partial<ReturnType<typeof mapState> & ReturnType<typeof mapDis
 
 const Count = (props: CountProps) => (
   <div>
-    The count is {props.common}
+    The count is {props.count}
     <button onClick={props.increment}>increment</button>
     <button onClick={props.incrementAsync}>incrementAsync</button>
   </div>
