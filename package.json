@@ -46,6 +46,7 @@
     "react-redux": "7.2.8",
     "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
+    "redux": "4.1.2",
     "swr": "1.3.0"
   },
   "devDependencies": {
@@ -109,7 +110,6 @@
     "terser-webpack-plugin": "5.3.1",
     "ts-import-plugin": "2.0.0",
     "ts-jest": "27.1.4",
-    "ts-loader": "9.2.8",
     "tslib": "2.3.1",
     "typescript": "4.6.3",
     "typings-for-css-modules-loader": "1.7.0",
