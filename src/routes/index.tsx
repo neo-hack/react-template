@@ -3,12 +3,12 @@ import { BrowserRouter, RouteObject, useRoutes } from 'react-router-dom'
 import Loadable from 'react-loadable'
 
 const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "Home" */ '@/pages/Home'),
+  loader: () => import(/* webpackChunkName: "Home" */ '@/pages/index'),
   loading: () => <div>loading</div>,
 })
 
-const In = Loadable({
-  loader: () => import(/* webpackChunkName: "In" */ '@/pages/Home/In'),
+const Post = Loadable({
+  loader: () => import(/* webpackChunkName: "In" */ '@/pages/post'),
   loading: () => <div>loading</div>,
 })
 
@@ -18,8 +18,8 @@ const routes: RouteObject[] = [
     element: <Home />,
   },
   {
-    path: '/in',
-    element: <In />,
+    path: '/post',
+    element: <Post />,
   },
 ]
 
