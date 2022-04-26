@@ -20,12 +20,10 @@ const dev = {
     publicPath: '/',
   },
   stats: 'errors-only',
-  cache: true,
   infrastructureLogging: {
     level: 'none',
   },
   devServer: {
-    hot: true,
     liveReload: true,
     host: '0.0.0.0',
     port,
@@ -102,5 +100,12 @@ const dev = {
     }),
   ],
 }
+
+const exitProcess = () => process.exit(0)
+
+// fix: webpack-dev-server doesn't exit on Ctrl+C
+;['SIGINT', 'SIGTERM'].forEach((signal) => {
+  process.on(signal, exitProcess)
+})
 
 module.exports = merge(common, dev)
