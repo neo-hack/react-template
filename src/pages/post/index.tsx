@@ -1,26 +1,13 @@
 import React from 'react'
-import useSWR from 'swr'
 
-import ExampleCount from '@/components/Counter/Count'
-import api from '@/api'
+import Counter from '@/components/Counter/Count'
 
-interface PageProps {
-  children?: React.ReactNode
-}
-
-const Home = (props: PageProps) => {
-  const { data } = useSWR('fake-data', api.fake.list, { refreshInterval: 1000 })
-  console.log(props)
+const Post = () => {
   return (
-    <div className="text-red-500">
-      this is new home page reload
-      {data?.map((v) => (
-        <span key={v}>{v}-1</span>
-      ))}
-      <ExampleCount />
-      {props.children}
+    <div className="flex flex-col justify-center items-center h-full">
+      <Counter />
     </div>
   )
 }
 
-export default Home
+export default Post

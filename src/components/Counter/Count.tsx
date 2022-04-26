@@ -22,10 +22,21 @@ const mapDispatch = ({ count }: Dispatch) => {
 type CountProps = Partial<ReturnType<typeof mapState> & ReturnType<typeof mapDispatch>>
 
 const Count = (props: CountProps) => (
-  <div>
-    The count is {props.count}
-    <button onClick={props.increment}>increment</button>
-    <button onClick={props.incrementAsync}>incrementAsync</button>
+  <div className="p-2 shadow-lg rounded-md flex flex-col justify-center bg-base-300">
+    <div className="stats shadow bg-transparent">
+      <div className="stat">
+        <div className="stat-title">The count</div>
+        <div className="stat-value">{props.count}</div>
+      </div>
+    </div>
+    <div>
+      <button className="btn btn-ghost" onClick={props.increment}>
+        increment
+      </button>
+      <button className="btn btn-ghost" onClick={props.incrementAsync}>
+        increment.Async
+      </button>
+    </div>
   </div>
 )
 

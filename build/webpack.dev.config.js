@@ -39,6 +39,7 @@ const dev = {
         changeOrigin: true,
       },
     },
+    historyApiFallback: true,
   },
   optimization: {
     moduleIds: 'named',
