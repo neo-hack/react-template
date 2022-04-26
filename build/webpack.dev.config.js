@@ -101,6 +101,7 @@ const dev = {
   ],
 }
 
+// issue: https://github.com/webpack/webpack-dev-server/issues/1479
 const exitProcess = () => process.exit(0)
 
 // fix: webpack-dev-server doesn't exit on Ctrl+C
