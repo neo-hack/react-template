@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 2.0.0
+
+### Major Changes
+
+- 6e43a0b: upgrade webpack react rematch and etc...
+
 ## 1.8.8
 
 ### Patch Changes
