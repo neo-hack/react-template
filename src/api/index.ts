@@ -1,9 +1,7 @@
-import { fake, Fake } from './fake'
+import { fake } from './fake'
 
 const api = {
   fake,
 }
-
-export { Fake }
 
 export default api

@@ -1,17 +1,18 @@
 import React from 'react'
-import App from './App'
-import store from './store'
 import { Provider } from 'react-redux'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
+
+import App from './App'
+import { store } from './store'
 
 const $ROOT = document.querySelector('#app')
+const root = createRoot($ROOT)
 
 const renderApp = (Component: any) => {
-  render(
+  root.render(
     <Provider store={store}>
       <Component />
     </Provider>,
-    $ROOT,
   )
 }
 

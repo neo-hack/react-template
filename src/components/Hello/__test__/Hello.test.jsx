@@ -5,7 +5,7 @@ import Hello from '@/components/Hello/Hello'
 describe('hello', () => {
   test('example jest with ts', () => {
     const component = renderer.create(<Hello />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

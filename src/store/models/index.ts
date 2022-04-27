@@ -1,5 +1,8 @@
-import common from './common'
+import { Models } from '@rematch/core'
+import { count } from './count'
 
-export default {
-  common,
+export interface RootModel extends Models<RootModel> {
+  count: typeof count
 }
+
+export const models: RootModel = { count }

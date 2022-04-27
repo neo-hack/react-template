@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const ThreadLoader = require('thread-loader')
+const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
@@ -8,8 +7,6 @@ const { merge } = require('webpack-merge')
 const configs = require('./config')
 const common = require('./webpack.common.config')
 const port = 8080
-
-ThreadLoader.warmup(configs.workerpool, ['ts-loader', 'babel-loader'])
 
 /**
  * @type import('webpack').Configuration
@@ -22,23 +19,25 @@ const dev = {
     filename: '[name].js',
     publicPath: '/',
   },
+  stats: 'errors-only',
+  infrastructureLogging: {
+    level: 'none',
+  },
   devServer: {
+    liveReload: true,
+    host: '0.0.0.0',
     port,
-    watchContentBase: true,
-    contentBase: configs.path.public,
-    hot: true,
-    stats: 'errors-only',
-    inline: true,
-    compress: true,
-    clientLogLevel: 'silent',
-    noInfo: true,
-    public: `http://localhost:${port}`,
+    static: {
+      publicPath: `http://localhost:${port}`,
+      watch: true,
+    },
     proxy: {
       '/proxy': {
         target: 'http://localhost:3000/',
         changeOrigin: true,
       },
     },
+    historyApiFallback: true,
   },
   optimization: {
     moduleIds: 'named',
@@ -50,30 +49,19 @@ const dev = {
         use: [
           { loader: 'style-loader' },
           {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
-              namedExport: true,
-              silent: true,
-            },
+            loader: '@teamsupercell/typings-for-css-modules-loader',
           },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
       },
       {
         test: /(\.styl$|\.stylus$)/,
         use: [
           { loader: 'style-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
           {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
-              namedExport: true,
-              silent: true,
-            },
+            loader: '@teamsupercell/typings-for-css-modules-loader',
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           {
@@ -90,6 +78,9 @@ const dev = {
     ],
   },
   plugins: [
+    new webpack.WatchIgnorePlugin({
+      paths: [/css\.d\.ts$/, /styl\.d\.ts$/],
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/template.html',
@@ -109,5 +100,13 @@ const dev = {
     }),
   ],
 }
+
+// issue: https://github.com/webpack/webpack-dev-server/issues/1479
+const exitProcess = () => process.exit(0)
+
+// fix: webpack-dev-server doesn't exit on Ctrl+C
+;['SIGINT', 'SIGTERM'].forEach((signal) => {
+  process.on(signal, exitProcess)
+})
 
 module.exports = merge(common, dev)
