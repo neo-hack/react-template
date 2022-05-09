@@ -1,5 +1,6 @@
 
    
 {
-  "plugins": []
+  "plugins": [],
+  "presets": ["@babel/preset-react"]
 }
