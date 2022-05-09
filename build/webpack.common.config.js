@@ -8,7 +8,7 @@ const configs = require('./config')
  */
 const common = {
   context: configs.path.context,
-  entry: ['react-hot-loader/patch', './src/index.tsx'],
+  entry: ['./src/index.tsx'],
   output: {
     path: configs.path.output,
     filename: '[name].js',

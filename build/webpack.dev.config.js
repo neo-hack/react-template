@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
+const RefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const configs = require('./config')
@@ -87,6 +88,7 @@ const dev = {
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new RefreshPlugin(),
     new WebpackBar(),
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {

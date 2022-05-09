@@ -1,6 +1,4 @@
 import React, { useCallback, useState } from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { hot } from 'react-hot-loader/root'
 import RouterViewer from '@/routes'
 import { DarkIcon, LightIcon } from '@/components/icon'
 
@@ -43,4 +41,4 @@ const App = () => {
   )
 }
 
-export default hot(App)
+export default App
