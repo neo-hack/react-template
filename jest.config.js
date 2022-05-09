@@ -1,5 +1,5 @@
 const path = require('path')
-const { defaults: tsjPreset, jsWithTsESM, jsWithBabelESM } = require('ts-jest/presets')
+const { jsWithTs } = require('ts-jest/presets')
 
 /**
  * @see {@link https://huafu.github.io/ts-jest/user/config/}
@@ -21,9 +21,7 @@ module.exports = {
     '\\.(css|less|scss|sss|styl)$': '<rootDir>/node_modules/jest-css-modules',
   },
   transform: {
-    ...jsWithBabelESM.transform,
-    ...tsjPreset.transform,
-    ...jsWithTsESM.transform,
+    ...jsWithTs.transform,
   },
   setupFiles: ['jest-localstorage-mock'],
 }
