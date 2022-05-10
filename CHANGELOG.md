@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 2.0.2
+
+### Patch Changes
+
+- 192449c: deprecated react-hot-loader with react-refresh
+
 ## 2.0.1
 
 ### Patch Changes
