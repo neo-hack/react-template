@@ -23,7 +23,7 @@ const Routes = () => {
 const RouterViewer = () => {
   return (
     <BrowserRouter>
-      <React.Suspense>
+      <React.Suspense fallback={<div>loading...</div>}>
         <Routes />
       </React.Suspense>
     </BrowserRouter>
