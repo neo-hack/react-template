@@ -16,7 +16,6 @@ specifiers:
   '@types/optimize-css-assets-webpack-plugin': 5.0.5
   '@types/react': 18.0.3
   '@types/react-dom': 18.0.0
-  '@types/react-loadable': 5.5.6
   '@types/react-redux': 7.1.23
   '@types/react-router-dom': 5.3.3
   '@types/react-test-renderer': 18.0.0
@@ -57,7 +56,6 @@ specifiers:
   prettier: 2.6.2
   react: 18.0.0
   react-dom: 18.0.0
-  react-loadable: 5.5.0
   react-redux: 7.2.8
   react-refresh: 0.13.0
   react-router: 6.3.0
@@ -94,7 +92,6 @@ dependencies:
   clsx: 1.1.1
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
-  react-loadable: 5.5.0_react@18.0.0
   react-redux: 7.2.8_zpnidt7m3osuk7shl3s4oenomq
   react-router: 6.3.0_react@18.0.0
   react-router-dom: 6.3.0_zpnidt7m3osuk7shl3s4oenomq
@@ -116,7 +113,6 @@ devDependencies:
   '@types/optimize-css-assets-webpack-plugin': 5.0.5
   '@types/react': 18.0.3
   '@types/react-dom': 18.0.0
-  '@types/react-loadable': 5.5.6
   '@types/react-redux': 7.1.23
   '@types/react-router-dom': 5.3.3
   '@types/react-test-renderer': 18.0.0
@@ -2572,13 +2568,6 @@ packages:
     resolution: {integrity: sha512-49897Y0UiCGmxZqpC8Blrf6meL8QUla6eb+BBhn69dTXlmuOlzkfr7HHY/O8J25e1lTUMs+YYxSlVDAaGHCOLg==}
     dependencies:
       '@types/react': 18.0.3
-    dev: true
-
-  /@types/react-loadable/5.5.6:
-    resolution: {integrity: sha512-2M7xH/wawZxNybbs/a76JkpUsMk4z6AxBh92cUtIBy2vK7EYYuitQbC4laY0hGz0e05R+mQ44YeHMtH2U+gMsw==}
-    dependencies:
-      '@types/react': 18.0.3
-      '@types/webpack': 4.41.32
     dev: true
 
   /@types/react-redux/7.1.23:
@@ -10295,15 +10284,6 @@ packages:
     resolution: {integrity: sha512-yUcBYdBBbo3QiPsgYDcfQcIkGZHfxOaoE6HLSnr1sPzMhdyxusbfKOSUbSd/ocGi32dxcj366PsTj+5oggeKKw==}
     dev: true
 
-  /react-loadable/5.5.0_react@18.0.0:
-    resolution: {integrity: sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      prop-types: 15.8.1
-      react: 18.0.0
-    dev: false
-
   /react-redux/7.2.8_zpnidt7m3osuk7shl3s4oenomq:
     resolution: {integrity: sha512-6+uDjhs3PSIclqoCk0kd6iX74gzrGc3W5zcAjbrFgEdIjRSQObdIwfx80unTkVUYvbQ95Y8Av3OvFHq1w5EOUw==}
     peerDependencies:
@@ -10378,7 +10358,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha1-5mTvMRYRZsl1HNvo28+GtftY93Q=}

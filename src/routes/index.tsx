@@ -1,16 +1,8 @@
 import React from 'react'
 import { BrowserRouter, RouteObject, useRoutes } from 'react-router-dom'
-import Loadable from 'react-loadable'
 
-const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "Home" */ '@/pages/index'),
-  loading: () => <div>loading</div>,
-})
-
-const Post = Loadable({
-  loader: () => import(/* webpackChunkName: "In" */ '@/pages/post'),
-  loading: () => <div>loading</div>,
-})
+const Home = React.lazy(() => import(/* webpackChunkName: "home" */ '@/pages/index'))
+const Post = React.lazy(() => import(/* webpackChunkName: "post" */ '@/pages/post'))
 
 const routes: RouteObject[] = [
   {
@@ -31,7 +23,9 @@ const Routes = () => {
 const RouterViewer = () => {
   return (
     <BrowserRouter>
-      <Routes />
+      <React.Suspense>
+        <Routes />
+      </React.Suspense>
     </BrowserRouter>
   )
 }
