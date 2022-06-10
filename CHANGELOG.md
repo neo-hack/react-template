@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 2.0.3
+
+### Patch Changes
+
+- 81676fb: replace react-loadable with react.lazy
+
 ## 2.0.2
 
 ### Patch Changes
