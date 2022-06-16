@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 2.0.4
+
+### Patch Changes
+
+- aabf29e: use installed cz-emoji
+
 ## 2.0.3
 
 ### Patch Changes
