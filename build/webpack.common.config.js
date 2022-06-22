@@ -31,7 +31,7 @@ const common = {
             loader: 'esbuild-loader',
             options: {
               loader: 'tsx',
-              target: 'es2015',
+              target: 'es2017',
             },
           },
         ],
