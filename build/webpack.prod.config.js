@@ -54,7 +54,7 @@ const prod = {
         terserOptions: {
           warnings: false,
           compress: {
-            drop_console: true,
+            drop_console: false,
           },
         },
       }),
@@ -89,8 +89,9 @@ const prod = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
             },
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },

@@ -17,6 +17,10 @@
 - **Setup** - `pnpm * pnpm dev`
 - **Build** - `pnpm build`
 
+## known issues
+
+- [#12 - `import.meta` with `esbuild-loader`](https://github.com/neo-hack/react-template/issues/12)
+
 ## refs
 
 - https://stackoverflow.com/questions/35412137/how-to-get-access-to-webpack-dev-server-from-devices-in-local-network
