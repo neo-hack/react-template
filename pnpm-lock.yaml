@@ -84,6 +84,7 @@ specifiers:
   webpack-cli: 4.9.2
   webpack-dev-server: 4.8.1
   webpack-merge: 5.8.0
+  webpack-plugin-react-pages: ^0.1.1
   webpackbar: 5.0.2
 
 dependencies:
@@ -172,6 +173,7 @@ devDependencies:
   webpack-cli: 4.9.2_udjrey2ydtzlvw3og7awxsnsq4
   webpack-dev-server: 4.8.1_q7qo2wgeiyigo3znjsjh7f36ue
   webpack-merge: 5.8.0
+  webpack-plugin-react-pages: link:../webpack-plugin-routes
   webpackbar: 5.0.2_webpack@5.72.0
 
 packages:
