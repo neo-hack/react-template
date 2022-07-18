@@ -21,6 +21,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": ".",
     "skipLibCheck": true,
+    "types": ["webpack-plugin-react-pages/shim"],
     "paths": {
       "@/*": ["src/*"]
     }

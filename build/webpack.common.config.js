@@ -1,5 +1,6 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { WebpackPluginReactPages } = require('webpack-plugin-react-pages')
 
 const configs = require('./config')
 
@@ -67,6 +68,9 @@ const common = {
         configFile: configs.path.tsconfig,
       },
       async: true,
+    }),
+    new WebpackPluginReactPages({
+      importMode: 'async',
     }),
   ],
 }
