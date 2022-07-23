@@ -1,5 +1,11 @@
 # @aiou/react-template
 
+## 2.1.0
+
+### Minor Changes
+
+- eeb5064: use virtual react routes module
+
 ## 2.0.4
 
 ### Patch Changes
