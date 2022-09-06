@@ -61,7 +61,7 @@ const prod = {
       new CssMinimizerPlugin({
         minimizerOptions: {
           preset: [
-            'advanced',
+            require.resolve('cssnano-preset-advanced'),
             {
               autoprefixer: false,
             },

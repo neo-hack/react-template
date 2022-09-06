@@ -1,23 +1,23 @@
 module.exports = {
   plugins: [
     [
-      'postcss-preset-env',
+      require('postcss-preset-env'),
       {
         autoprefixer: {
           browserslits: ['> 1%'],
         },
       },
     ],
-    'rucksack-css',
-    'postcss-import',
-    'postcss-url',
+    require('rucksack-css'),
+    require('postcss-import'),
+    require('postcss-url'),
     [
-      'cssnano',
+      require.resolve('cssnano'),
       {
-        preset: 'advanced',
+        preset: require.resolve('cssnano-preset-advanced'),
         autoprefixer: false,
       },
     ],
-    'tailwindcss',
+    require('tailwindcss'),
   ],
 }
