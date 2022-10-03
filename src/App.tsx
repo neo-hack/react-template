@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
+
 import RouterViewer from '@/routes'
 import { DarkIcon, LightIcon } from '@/components/Icons'
-
 import './App.css'
 
 const App = () => {

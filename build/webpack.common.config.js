@@ -32,7 +32,9 @@ const common = {
             loader: 'esbuild-loader',
             options: {
               loader: 'tsx',
-              target: 'es2015',
+              // according to https://web.dev/publish-modern-javascript/
+              // es2017 support 95% browsers
+              target: 'es2017',
             },
           },
         ],
