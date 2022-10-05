@@ -32,18 +32,16 @@ const prod = {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          test(module) {
-            return module.resource && /react/.test(module.resource)
-          },
           name: 'vendors',
           chunks: 'all',
           priority: -10,
         },
-        commons: {
+        async: {
           chunks: 'async',
-          name: 'async',
           minChunks: 2,
           minSize: 0,
+          filename: 'async/[name].[contenthash:8].js',
+          reuseExistingChunk: true,
         },
       },
     },
