@@ -8,6 +8,7 @@ const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
 const SizePlugin = require('size-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const { merge } = require('webpack-merge')
 
@@ -116,6 +117,15 @@ const prod = {
         removeComments: true,
         removeEmptyAttributes: true,
       },
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
+      // Bump up the default maximum size (2mb) that's precached,
+      // to make lazy-loading failure scenarios less likely.
+      // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
