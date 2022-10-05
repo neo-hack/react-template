@@ -143,7 +143,9 @@ const prod = {
           }),
         ]
       : []),
-    new CompressionPlugin(),
+    new CompressionPlugin({
+      test: /\.(js|css|html|svg)$/,
+    }),
     new SizePlugin({
       writeFile: false,
     }),
