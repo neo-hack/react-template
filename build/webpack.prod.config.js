@@ -53,7 +53,9 @@ const prod = {
         terserOptions: {
           warnings: false,
           compress: {
-            drop_console: true,
+            // drop console.log, console.debug, and keep the rest
+            // See https://github.com/webpack-contrib/terser-webpack-plugin/issues/57#issuecomment-498549997
+            pure_funcs: ['console.log', 'console.debug'],
           },
         },
       }),
