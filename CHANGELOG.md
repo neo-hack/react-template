@@ -1,5 +1,16 @@
 # @aiou/react-template
 
+## 2.2.0
+
+### Minor Changes
+
+- 607357d: add workbox precache
+
+### Patch Changes
+
+- ef6ee6e: enable async chunk split
+- adb7cb0: string postcss plugin broken in pnpm monorepo
+
 ## 2.1.0
 
 ### Minor Changes
