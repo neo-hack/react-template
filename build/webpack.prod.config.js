@@ -8,6 +8,7 @@ const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
 const SizePlugin = require('size-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const { merge } = require('webpack-merge')
 
@@ -52,7 +53,9 @@ const prod = {
         terserOptions: {
           warnings: false,
           compress: {
-            drop_console: true,
+            // drop console.log, console.debug, and keep the rest
+            // See https://github.com/webpack-contrib/terser-webpack-plugin/issues/57#issuecomment-498549997
+            pure_funcs: ['console.log', 'console.debug'],
           },
         },
       }),
@@ -117,6 +120,15 @@ const prod = {
         removeEmptyAttributes: true,
       },
     }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
+      // Bump up the default maximum size (2mb) that's precached,
+      // to make lazy-loading failure scenarios less likely.
+      // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+    }),
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: ['vendors', 'main'],
@@ -133,7 +145,9 @@ const prod = {
           }),
         ]
       : []),
-    new CompressionPlugin(),
+    new CompressionPlugin({
+      test: /\.(js|css|html|svg)$/,
+    }),
     new SizePlugin({
       writeFile: false,
     }),
