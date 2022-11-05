@@ -75,23 +75,64 @@ const prod = {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [/\.module.css$/],
         use: [
           { loader: MiniCSSExtractPlugin.loader },
-          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'css-loader', options: { sourceMap: true, modules: false } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
       },
       {
         test: /(\.styl$|\.stylus$)/,
+        exclude: [/(\.module.styl$|\.module.stylus$)/],
         use: [
           { loader: MiniCSSExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
+              modules: false,
+            },
+          },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          {
+            loader: 'stylus-loader',
+            options: {
+              stylusOptions: {
+                sourceMap: true,
+                use: configs.stylus.plugins,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.module.css$/,
+        use: [
+          { loader: MiniCSSExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
+            },
+          },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+        ],
+      },
+      {
+        test: /(\.module.styl$|\.module.stylus$)/,
+        use: [
+          { loader: MiniCSSExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
             },
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
@@ -146,7 +187,8 @@ const prod = {
         ]
       : []),
     new CompressionPlugin({
-      test: /\.(js|css|html|svg)$/,
+      test: /\.(js|css|svg)$/,
+      exclude: [/service-worker\.js/],
     }),
     new SizePlugin({
       writeFile: false,

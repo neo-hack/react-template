@@ -1,4 +1,5 @@
 import React from 'react'
+import Hello from '@/components/Hello/Hello'
 
 const Home = () => {
   return (
@@ -10,7 +11,9 @@ const Home = () => {
           </pre>
         </div>
         <div>
-          <h1 className="text-5xl font-bold">React Template</h1>
+          <h1 className="text-5xl font-bold">
+            <Hello>React Template</Hello>
+          </h1>
           <div className="flex flex-col my-6 gap-2">
             <div className="flex items-center gap-2">
               <i className="gg-check-o" />

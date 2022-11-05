@@ -45,24 +45,68 @@ const dev = {
   },
   module: {
     rules: [
+      // enable cssmodules from .module.css
       {
         test: /\.css$/,
+        exclude: [/\.module.css$/],
         use: [
           { loader: 'style-loader' },
-          {
-            loader: '@teamsupercell/typings-for-css-modules-loader',
-          },
-          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'css-loader', options: { sourceMap: true, modules: false } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
       },
       {
         test: /(\.styl$|\.stylus$)/,
+        exclude: [/(\.module.styl$|\.module.stylus$)/],
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'css-loader', options: { sourceMap: true, modules: false } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          {
+            loader: 'stylus-loader',
+            options: {
+              stylusOptions: {
+                sourceMap: true,
+                use: configs.stylus.plugins,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.module.css$/,
+        use: [
+          { loader: 'style-loader' },
           {
             loader: '@teamsupercell/typings-for-css-modules-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
+            },
+          },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+        ],
+      },
+      {
+        test: /(\.module.styl$|\.module.stylus$)/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: '@teamsupercell/typings-for-css-modules-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
+            },
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           {
