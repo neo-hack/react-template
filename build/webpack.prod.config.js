@@ -75,9 +75,17 @@ const prod = {
     rules: [
       {
         test: /\.css$/,
-        exclude: [/\.module.css$/],
+        exclude: [/\.module.css$/, /\.lazy.css$/],
         use: [
           { loader: MiniCSSExtractPlugin.loader },
+          { loader: 'css-loader', options: { sourceMap: true, modules: false } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+        ],
+      },
+      {
+        test: /\.lazy.css$/,
+        use: [
+          { loader: 'style-loader', options: { injectType: 'lazyStyleTag' } },
           { loader: 'css-loader', options: { sourceMap: true, modules: false } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],

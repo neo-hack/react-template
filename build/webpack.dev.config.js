@@ -45,10 +45,10 @@ const dev = {
   },
   module: {
     rules: [
-      // enable cssmodules from .module.css
+      // enable cssmodules for *.module.css and *module.styl
       {
         test: /\.css$/,
-        exclude: [/\.module.css$/],
+        exclude: [/\.module.css$/, /\.lazy.css$/],
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader', options: { sourceMap: true, modules: false } },
@@ -71,6 +71,14 @@ const dev = {
               },
             },
           },
+        ],
+      },
+      {
+        test: /\.lazy.css$/,
+        use: [
+          { loader: 'style-loader', options: { injectType: 'lazyStyleTag' } },
+          { loader: 'css-loader', options: { sourceMap: true, modules: false } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
       },
       {
