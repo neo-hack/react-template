@@ -3,14 +3,13 @@
   "version": "2.2.0",
   "description": "React template",
   "license": "MIT",
-  "homepage": "https://github.com/spring-catponents/react-template#readme",
+  "homepage": "https://github.com/neo-hack/react-template#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spring-catponents/react-template.git",
-    "directory": "packages/react-template"
+    "url": "git+https://github.com/neo-hack/react-template.git"
   },
   "bugs": {
-    "url": "https://github.com/spring-catponents/react-template/issues",
+    "url": "https://github.com/neo-hack/react-template/issues",
     "email": "jiangweixian1994@gmail.com"
   },
   "author": {
