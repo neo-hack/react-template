@@ -96,6 +96,7 @@
     "postcss": "8.4.12",
     "postcss-import": "14.1.0",
     "postcss-js": "4.0.0",
+    "postcss-lightningcss": "^0.6.0",
     "postcss-loader": "6.2.1",
     "postcss-preset-env": "7.4.3",
     "postcss-url": "10.1.3",

@@ -53,14 +53,7 @@ const prod = {
         drop: ['console', 'debugger'],
       }),
       new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            require.resolve('cssnano-preset-advanced'),
-            {
-              autoprefixer: false,
-            },
-          ],
-        },
+        minify: CssMinimizerPlugin.esbuildMinify,
       }),
     ],
   },
