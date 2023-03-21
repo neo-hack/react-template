@@ -18,8 +18,8 @@ const common = {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
     alias: {
       '@': configs.path.project,
-      assets: configs.path.assets,
-      static: configs.path.static,
+      'assets': configs.path.assets,
+      'static': configs.path.static,
     },
   },
   module: {
