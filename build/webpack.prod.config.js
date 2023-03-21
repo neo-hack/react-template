@@ -1,8 +1,8 @@
 const path = require('path')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const { EsbuildPlugin } = require('esbuild-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -47,17 +47,10 @@ const prod = {
       },
     },
     minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        extractComments: false,
-        terserOptions: {
-          warnings: false,
-          compress: {
-            // drop console.log, console.debug, and keep the rest
-            // See https://github.com/webpack-contrib/terser-webpack-plugin/issues/57#issuecomment-498549997
-            pure_funcs: ['console.log', 'console.debug'],
-          },
-        },
+      new EsbuildPlugin({
+        target: 'es2015',
+        minify: true,
+        drop: ['console', 'debugger'],
       }),
       new CssMinimizerPlugin({
         minimizerOptions: {
