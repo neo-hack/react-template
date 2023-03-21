@@ -20,6 +20,16 @@ const dev = {
     filename: '[name].js',
     publicPath: '/',
   },
+  // https://github.com/esbuild-kit/esbuild-loader/issues/224#issuecomment-971330990
+  cache: {
+    type: 'filesystem',
+  },
+  experiments: {
+    lazyCompilation: {
+      entries: false,
+      imports: true,
+    },
+  },
   stats: 'errors-only',
   infrastructureLogging: {
     level: 'none',
