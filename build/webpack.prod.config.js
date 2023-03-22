@@ -31,17 +31,20 @@ const prod = {
   optimization: {
     moduleIds: 'named',
     splitChunks: {
+      chunks: 'all',
+      minSize: 200000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
       cacheGroups: {
-        vendors: {
-          name: 'vendors',
-          chunks: 'all',
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
           priority: -10,
+          reuseExistingChunk: true,
         },
-        async: {
-          chunks: 'async',
+        default: {
           minChunks: 2,
-          minSize: 0,
-          filename: 'async/[name].[contenthash:8].js',
+          priority: -20,
           reuseExistingChunk: true,
         },
       },
