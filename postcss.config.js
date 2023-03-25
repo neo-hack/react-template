@@ -1,5 +1,7 @@
 module.exports = {
   plugins: [
+    require('postcss-import'),
+    require('postcss-url'),
     [
       require('postcss-lightningcss'),
       {
@@ -15,8 +17,6 @@ module.exports = {
       },
     ],
     require('rucksack-css'),
-    require('postcss-import'),
-    require('postcss-url'),
     require('tailwindcss'),
   ],
 }
