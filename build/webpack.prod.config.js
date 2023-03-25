@@ -3,7 +3,6 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const { EsbuildPlugin } = require('esbuild-loader')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -99,10 +98,9 @@ const prod = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'public/template.html',
+      template: 'index.html',
       inject: true,
       minify: {
         collapseWhitespace: true,

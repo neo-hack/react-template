@@ -1,6 +1,7 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { WebpackPluginReactPages } = require('webpack-plugin-react-pages')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const configs = require('./config')
 
@@ -49,15 +50,22 @@ const common = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: configs.path.static,
           to: 'static',
+          noErrorOnMissing: true,
         },
         {
           from: configs.path.public,
           to: '',
+          // ignore copy .gitkeep
+          filter: (filepath) => {
+            return !/\.gitkeep$/.test(filepath)
+          },
+          noErrorOnMissing: true,
         },
       ],
     }),

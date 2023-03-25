@@ -94,7 +94,7 @@ const dev = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'public/template.html',
+      template: 'index.html',
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
