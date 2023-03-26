@@ -7,7 +7,8 @@
 
 ## features
 
-- ⚡ Pure webpack + esbuild + lightningcss
+- ⚡ Pure webpack + swc + lightningcss
+- 🗄️ Support automatic setup path alias from tsconfig-paths
 - 🎐 Tailwindcss
 - 💽 [Rematch](https://github.com/rematch/rematch)
 - 📢 With friendly build progress and error output
@@ -16,7 +17,7 @@
 
 ## development
 
-- **Setup** - `pnpm * pnpm dev`
+- **Setup** - `pnpm i && pnpm dev`
 - **Build** - `pnpm build`
 
 ## refs
