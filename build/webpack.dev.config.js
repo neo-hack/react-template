@@ -97,7 +97,6 @@ const dev = {
       template: 'index.html',
       inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new RefreshPlugin(),
     new WebpackBar(),
     new FriendlyErrorsPlugin({

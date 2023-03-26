@@ -1,8 +1,8 @@
 const path = require('path')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const { EsbuildPlugin } = require('esbuild-loader')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -49,13 +49,18 @@ const prod = {
       },
     },
     minimizer: [
-      new EsbuildPlugin({
-        target: 'es2015',
-        minify: true,
-        drop: ['console', 'debugger'],
+      // refs: https://swc.rs/docs/configuration/minification#jscminifycompress
+      new TerserPlugin({
+        minify: TerserPlugin.swcMinify,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+          },
+        },
       }),
       new CssMinimizerPlugin({
-        minify: CssMinimizerPlugin.esbuildMinify,
+        minify: CssMinimizerPlugin.lightningCssMinify,
       }),
     ],
   },

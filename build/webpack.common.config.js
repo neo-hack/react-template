@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const configs = require('./config')
 
+const isDevelopment = process.env.NODE_ENV === 'development'
+
 /**
  * @type import('webpack').Configuration
  */
@@ -19,21 +21,33 @@ const common = {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
     alias: {
       '@': configs.path.project,
-      'assets': configs.path.assets,
-      'static': configs.path.static,
+      assets: configs.path.assets,
+      static: configs.path.static,
     },
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.[jt]sx?|[cm]?js$/i,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'esbuild-loader',
+            loader: 'swc-loader',
             options: {
-              loader: 'tsx',
-              target: 'es2015',
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                    development: isDevelopment,
+                    refresh: isDevelopment,
+                  },
+                },
+              },
             },
           },
         ],
