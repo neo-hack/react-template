@@ -8,7 +8,7 @@ export const count = createModel<RootModel>()({
       return state + payload
     },
   },
-  effects: (dispatch) => ({
+  effects: dispatch => ({
     incrementAsync(payload: number) {
       dispatch.count.increment(payload)
     },

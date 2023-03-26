@@ -1,8 +1,6 @@
-import React from 'react'
-
 export const DarkIcon = () => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -31,7 +29,7 @@ export const LightIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
