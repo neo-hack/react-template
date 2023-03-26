@@ -1,5 +1,6 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const { WebpackPluginReactPages } = require('webpack-plugin-react-pages')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
@@ -19,11 +20,7 @@ const common = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
-    alias: {
-      '@': configs.path.project,
-      assets: configs.path.assets,
-      static: configs.path.static,
-    },
+    plugins: [new TsconfigPathsPlugin()],
   },
   module: {
     rules: [
@@ -67,11 +64,6 @@ const common = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        {
-          from: configs.path.static,
-          to: 'static',
-          noErrorOnMissing: true,
-        },
         {
           from: configs.path.public,
           to: '',

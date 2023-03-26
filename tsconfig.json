@@ -23,7 +23,8 @@
     "skipLibCheck": true,
     "types": ["webpack-plugin-react-pages/shim", "node"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "assets": ["src/assets/*"]
     }
   },
   "include": ["./global.d.ts", "src", "build"],

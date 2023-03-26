@@ -23,8 +23,8 @@ const prod = {
   stats: 'errors-only',
   output: {
     path: configs.path.output,
-    filename: path.posix.join('static', 'js/[name].[chunkhash].js'),
-    chunkFilename: path.posix.join('static', 'js/[name].[chunkhash].async.js'),
+    filename: path.posix.join('assets', 'js/[name].[chunkhash].js'),
+    chunkFilename: path.posix.join('assets', 'js/[name].[chunkhash].async.js'),
     publicPath: './',
   },
   optimization: {
@@ -127,8 +127,8 @@ const prod = {
       include: ['vendors', 'main'],
     }),
     new MiniCSSExtractPlugin({
-      filename: path.posix.join('static', 'css/[name].[contenthash].css'),
-      chunkFilename: path.posix.join('static', 'css/[name].[contenthash].async.css'),
+      filename: path.posix.join('assets', 'css/[name].[contenthash].css'),
+      chunkFilename: path.posix.join('assets', 'css/[name].[contenthash].async.css'),
     }),
 
     ...(configs.analyzer
