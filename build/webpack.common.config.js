@@ -49,6 +49,41 @@ const common = {
           },
         ],
       },
+      // refs: https://react-svgr.com/docs/webpack/
+      // import { ReactComponent as XXX } from 'xxx.svg?react'
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: /react/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              prettier: false,
+              svgo: false,
+              svgoConfig: {
+                plugins: [{ removeViewBox: false }],
+              },
+              titleProp: true,
+              ref: true,
+              exportType: 'named',
+            },
+          },
+        ],
+      },
+      // import url from 'xxx.svg'
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: {
+          not: /react/,
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192,
+          },
+        },
+      },
       {
         test: /\.(png|jpg|gif)$/i,
         type: 'asset',
