@@ -1,9 +1,10 @@
-import { useCallback, useState } from 'react'
-import RouterViewer from '@/routes'
-import { DarkIcon, LightIcon } from '@/components/Icons'
-import { ReactComponent as ReactLogo } from './assets/react.svg?react'
-
 import './App.css'
+
+import { useCallback, useState } from 'react'
+
+import { ReactComponent as ReactLogo } from './assets/react.svg?react'
+import { DarkIcon, LightIcon } from '@/components/Icons'
+import RouterViewer from '@/routes'
 
 const App = () => {
   const [theme, setTheme] = useState<'night' | 'light'>('night')

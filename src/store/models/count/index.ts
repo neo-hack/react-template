@@ -1,4 +1,5 @@
 import { createModel } from '@rematch/core'
+
 import type { RootModel } from '../index'
 
 export const count = createModel<RootModel>()({

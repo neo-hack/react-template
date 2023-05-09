@@ -1,4 +1,5 @@
 import renderer from 'react-test-renderer'
+
 import Hello from '@/components/Hello/Hello'
 
 describe('hello', () => {
