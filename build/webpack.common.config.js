@@ -57,16 +57,29 @@ const common = {
         resourceQuery: /react/,
         use: [
           {
-            loader: '@svgr/webpack',
+            loader: 'swc-loader',
             options: {
-              prettier: false,
-              svgo: false,
-              svgoConfig: {
-                plugins: [{ removeViewBox: false }],
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                    development: isDevelopment,
+                    refresh: isDevelopment,
+                  },
+                },
               },
-              titleProp: true,
-              ref: true,
+            },
+          },
+          {
+            loader: '@svgr-rs/svgrs-plugin/webpack',
+            options: {
               exportType: 'named',
+              namedExport: 'ReactComponent',
             },
           },
         ],
