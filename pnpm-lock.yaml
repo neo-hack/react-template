@@ -8,7 +8,7 @@ specifiers:
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.5
   '@rematch/core': 2.2.0
   '@soda/friendly-errors-webpack-plugin': 1.8.1
-  '@svgr-rs/svgrs-plugin': ^0.1.0
+  '@svgr-rs/svgrs-plugin': ^0.1.1
   '@swc/core': ^1.3.42
   '@tailwindcss/typography': 0.5.2
   '@teamsupercell/typings-for-css-modules-loader': 2.5.1
@@ -105,7 +105,7 @@ devDependencies:
   '@changesets/cli': 2.22.0
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.5_36rna4wqw7umaapjpkcpg5wcba
   '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.72.0
-  '@svgr-rs/svgrs-plugin': 0.1.0_webpack@5.72.0
+  '@svgr-rs/svgrs-plugin': 0.1.1_webpack@5.72.0
   '@swc/core': 1.3.42
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.2.7
   '@teamsupercell/typings-for-css-modules-loader': 2.5.1
@@ -3467,8 +3467,8 @@ packages:
       string.prototype.matchall: 4.0.7
     dev: true
 
-  /@svgr-rs/core-darwin-arm64/0.0.8:
-    resolution: {integrity: sha512-KwYMglCLR+xpJlQfWa1bNoPBvi3kv6P2ZE/HvqGFEwrILK68Z5UD8dZ41Tb7p3JT7uO4D1tMmp5ziHD8Krxgqw==}
+  /@svgr-rs/core-darwin-arm64/0.0.9:
+    resolution: {integrity: sha512-y8ukgXGlITPih5DanXCVlA4dSmwLYC3nZORVcBmAv2DqjMAbbTxDDpTZnfjDS8Q5CySCeKfn5Vir854ooEtNzA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -3476,16 +3476,16 @@ packages:
     dev: true
     optional: true
 
-  /@svgr-rs/core-darwin-universal/0.0.8:
-    resolution: {integrity: sha512-kwNeeKVk0pudpG/fs0DgjQCClW/HqMOW004DSM0hSD82lKJtCX7NLjVIqx56RqIy6RVlx2grh6rKW7cCyts9Xw==}
+  /@svgr-rs/core-darwin-universal/0.0.9:
+    resolution: {integrity: sha512-47gStIjv64UXlkwnwUUR3SQpKY9LitaVoNEvZCElLfcFmxmd143LtpaoFWlvqGWE+rLPf6dI5w0Ap53AF+Mp1A==}
     engines: {node: '>= 10'}
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@svgr-rs/core-darwin-x64/0.0.8:
-    resolution: {integrity: sha512-WEptKFE0xrvC3XMC3xYKYMXYi8N2lp16oQtyoC19Kb4Nob26Lk+jZOW+b3NbyexJgFTu7cm0x00sEREhYVEm8A==}
+  /@svgr-rs/core-darwin-x64/0.0.9:
+    resolution: {integrity: sha512-UaDagUKgryut18C8sWpBWZdstMieHaQI6qD910xm3QPPXoob6vifgS9TNYcHurUU85K9NAWSrnWoqG3fzUgqUQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -3493,8 +3493,8 @@ packages:
     dev: true
     optional: true
 
-  /@svgr-rs/core-win32-arm64-msvc/0.0.8:
-    resolution: {integrity: sha512-pKOpengtbbkLDncaoYAxh/HGOig08SZSgcAMtpW7lm+Do2VmcKtjMS3SJISWg8U69katNUUCm6i9xEHYueErew==}
+  /@svgr-rs/core-win32-arm64-msvc/0.0.9:
+    resolution: {integrity: sha512-KwvRSU4rgkfkqeQD3/ST5gABvCZTaHKVNl+0N3Or5o44Kgyyzui8x2nIx0fYrEvp80jTygzB4fHqz6mrG3jZKA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -3502,8 +3502,8 @@ packages:
     dev: true
     optional: true
 
-  /@svgr-rs/core-win32-x64-msvc/0.0.8:
-    resolution: {integrity: sha512-cvSEChajA+UsXcvgVoxQwgawHiIXZzo6TO7Af3WsbdF12In3XmHreUjzvZbj9BoJEG4s5yKyEWtZvVD4CMoxJw==}
+  /@svgr-rs/core-win32-x64-msvc/0.0.9:
+    resolution: {integrity: sha512-3EB764W/6wlZ+5tpOanO84Yo0cAt0Rvghthswsoa3CMZIKu8Y7X5MGMGd4ny9ObgSLZ723ll+tWxKW71Ppe8Mw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3511,19 +3511,19 @@ packages:
     dev: true
     optional: true
 
-  /@svgr-rs/core/0.0.8:
-    resolution: {integrity: sha512-9YpE/qPRG+aD9EElTQ8C/OWIwuQS3mPMbzk8lwpLy4wOcSZr/1naEPkMUiHvFZaaCbInA2Y/8fBE7oyIPbpWzA==}
+  /@svgr-rs/core/0.0.9:
+    resolution: {integrity: sha512-o16hJ9N2wTfy2+0QeWvm0h3RC2X8n/RMje6gHFRfuB85Wjw9uMShuDVeV4AAIJKD/0HlvRtMVAcLEtB6GAkI+Q==}
     engines: {node: '>= 10'}
     optionalDependencies:
-      '@svgr-rs/core-darwin-arm64': 0.0.8
-      '@svgr-rs/core-darwin-universal': 0.0.8
-      '@svgr-rs/core-darwin-x64': 0.0.8
-      '@svgr-rs/core-win32-arm64-msvc': 0.0.8
-      '@svgr-rs/core-win32-x64-msvc': 0.0.8
+      '@svgr-rs/core-darwin-arm64': 0.0.9
+      '@svgr-rs/core-darwin-universal': 0.0.9
+      '@svgr-rs/core-darwin-x64': 0.0.9
+      '@svgr-rs/core-win32-arm64-msvc': 0.0.9
+      '@svgr-rs/core-win32-x64-msvc': 0.0.9
     dev: true
 
-  /@svgr-rs/svgrs-plugin/0.1.0_webpack@5.72.0:
-    resolution: {integrity: sha512-+vgEw3cpQUBSPpC+2YdgfK8W8xbLsvQb+xASD+xhPKwA9Qjudi32JvZzuc5Oec9L+6013xDWwfLxX5KLxTFIrA==}
+  /@svgr-rs/svgrs-plugin/0.1.1_webpack@5.72.0:
+    resolution: {integrity: sha512-UwNhl9NItr042ljvEreFquUMiQQtt7mZn9f47wDRFxEKS5qxPRf+9QcwnKUGvNOMM5IrKUC0n++6P5DUReBrgQ==}
     engines: {node: '>=14'}
     peerDependencies:
       vite: ^3 || ^4
@@ -3535,7 +3535,7 @@ packages:
         optional: true
     dependencies:
       '@rollup/pluginutils': 5.0.2
-      '@svgr-rs/core': 0.0.8
+      '@svgr-rs/core': 0.0.9
       webpack: 5.72.0_wfd5rlvlmpbpyqtrbwbe2u7vpa
     transitivePeerDependencies:
       - rollup
