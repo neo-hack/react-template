@@ -56,6 +56,7 @@
     "@changesets/cli": "2.22.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.5",
     "@soda/friendly-errors-webpack-plugin": "1.8.1",
+    "@svgr-rs/core": "^0.0.11",
     "@svgr-rs/svgrs-plugin": "^0.1.1",
     "@swc/core": "^1.3.42",
     "@tailwindcss/typography": "0.5.2",
