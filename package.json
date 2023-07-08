@@ -4,6 +4,9 @@
   "packageManager": "pnpm@7.23.0",
   "description": "React template",
   "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
   "homepage": "https://github.com/neo-hack/react-template#readme",
   "repository": {
     "type": "git",
