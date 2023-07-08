@@ -7,15 +7,17 @@
 
 ## features
 
-- Pure webpack + esbuild
-- [Rematch](https://github.com/rematch/rematch)
-- With friendly build progress and error output
-- Bundle size analyzer
-- Filesystem-based routes with [webpack-plugin-react-pages](https://github.com/JiangWeixian/webpack-plugin-react-pages)
+- ⚡ Pure webpack + swc + lightningcss
+- 🗄️ Support automatic setup path alias from tsconfig-paths
+- 🎐 Tailwindcss
+- 💽 [Rematch](https://github.com/rematch/rematch)
+- 📢 With friendly build progress and error output
+- 📈 Bundle size analyzer
+- 📁 Filesystem-based routes with [webpack-plugin-react-pages](https://github.com/JiangWeixian/webpack-plugin-react-pages)
 
 ## development
 
-- **Setup** - `pnpm * pnpm dev`
+- **Setup** - `pnpm i && pnpm dev`
 - **Build** - `pnpm build`
 
 ## refs

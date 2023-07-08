@@ -7,6 +7,7 @@ const { merge } = require('webpack-merge')
 
 const configs = require('./config')
 const common = require('./webpack.common.config')
+
 const port = 8080
 
 /**
@@ -19,6 +20,16 @@ const dev = {
     path: configs.path.output,
     filename: '[name].js',
     publicPath: '/',
+  },
+  // https://github.com/esbuild-kit/esbuild-loader/issues/224#issuecomment-971330990
+  cache: {
+    type: 'filesystem',
+  },
+  experiments: {
+    lazyCompilation: {
+      entries: false,
+      imports: true,
+    },
   },
   stats: 'errors-only',
   infrastructureLogging: {
@@ -84,10 +95,9 @@ const dev = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'public/template.html',
+      template: 'index.html',
       inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new RefreshPlugin(),
     new WebpackBar(),
     new FriendlyErrorsPlugin({

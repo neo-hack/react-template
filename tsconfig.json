@@ -8,7 +8,7 @@
     "checkJs": false,
     "module": "esnext",
     "target": "ES2018",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "lib": ["es6", "dom"],
     "importHelpers": true,
@@ -23,8 +23,10 @@
     "skipLibCheck": true,
     "types": ["webpack-plugin-react-pages/shim", "node"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "assets": ["src/assets/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "build", "**/*.js"]
+  "include": ["./global.d.ts", "src", "build"],
+  "exclude": ["node_modules", "dist"]
 }

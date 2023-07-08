@@ -1,8 +1,12 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const { WebpackPluginReactPages } = require('webpack-plugin-react-pages')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const configs = require('./config')
+
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 /**
  * @type import('webpack').Configuration
@@ -16,50 +20,106 @@ const common = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
-    alias: {
-      '@': configs.path.project,
-      assets: configs.path.assets,
-      static: configs.path.static,
-    },
+    plugins: [new TsconfigPathsPlugin()],
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.[jt]sx?|[cm]?js$/i,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'esbuild-loader',
+            loader: 'swc-loader',
             options: {
-              loader: 'tsx',
-              target: 'es2015',
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                    development: isDevelopment,
+                    refresh: isDevelopment,
+                  },
+                },
+              },
             },
           },
         ],
       },
+      // refs: https://react-svgr.com/docs/webpack/
+      // import { ReactComponent as XXX } from 'xxx.svg?react'
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: /react/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'swc-loader',
             options: {
-              name: '[path][name].[ext]',
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                    development: isDevelopment,
+                    refresh: isDevelopment,
+                  },
+                },
+              },
+            },
+          },
+          {
+            loader: '@svgr-rs/svgrs-plugin/webpack',
+            options: {
+              exportType: 'named',
+              namedExport: 'ReactComponent',
             },
           },
         ],
+      },
+      // import url from 'xxx.svg'
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: {
+          not: /react/,
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192,
+          },
+        },
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024, // 4kb
+          },
+        },
       },
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: configs.path.static,
-          to: 'static',
-        },
-        {
           from: configs.path.public,
           to: '',
+          // ignore copy .gitkeep
+          filter: (filepath) => {
+            return !/\.gitkeep$/.test(filepath)
+          },
+          noErrorOnMissing: true,
         },
       ],
     }),

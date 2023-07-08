@@ -1,9 +1,8 @@
 const path = require('path')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -24,50 +23,44 @@ const prod = {
   stats: 'errors-only',
   output: {
     path: configs.path.output,
-    filename: path.posix.join('static', 'js/[name].[chunkhash].js'),
-    chunkFilename: path.posix.join('static', 'js/[name].[chunkhash].async.js'),
+    filename: path.posix.join('assets', 'js/[name].[chunkhash].js'),
+    chunkFilename: path.posix.join('assets', 'js/[name].[chunkhash].async.js'),
     publicPath: './',
   },
   optimization: {
     moduleIds: 'named',
     splitChunks: {
+      chunks: 'all',
+      minSize: 200000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
       cacheGroups: {
-        vendors: {
-          name: 'vendors',
-          chunks: 'all',
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
           priority: -10,
+          reuseExistingChunk: true,
         },
-        async: {
-          chunks: 'async',
+        default: {
           minChunks: 2,
-          minSize: 0,
-          filename: 'async/[name].[contenthash:8].js',
+          priority: -20,
           reuseExistingChunk: true,
         },
       },
     },
     minimizer: [
+      // refs: https://swc.rs/docs/configuration/minification#jscminifycompress
       new TerserPlugin({
-        parallel: true,
-        extractComments: false,
+        minify: TerserPlugin.swcMinify,
         terserOptions: {
-          warnings: false,
           compress: {
-            // drop console.log, console.debug, and keep the rest
-            // See https://github.com/webpack-contrib/terser-webpack-plugin/issues/57#issuecomment-498549997
-            pure_funcs: ['console.log', 'console.debug'],
+            drop_console: true,
+            drop_debugger: true,
           },
         },
       }),
       new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            require.resolve('cssnano-preset-advanced'),
-            {
-              autoprefixer: false,
-            },
-          ],
-        },
+        minify: CssMinimizerPlugin.lightningCssMinify,
       }),
     ],
   },
@@ -90,8 +83,9 @@ const prod = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]___[hash:base64:5]',
+              modules: {
+                localIdentName: '[name]_[local]___[hash:base64:5]',
+              },
             },
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
@@ -109,10 +103,9 @@ const prod = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'public/template.html',
+      template: 'index.html',
       inject: true,
       minify: {
         collapseWhitespace: true,
@@ -134,8 +127,8 @@ const prod = {
       include: ['vendors', 'main'],
     }),
     new MiniCSSExtractPlugin({
-      filename: path.posix.join('static', 'css/[name].[contenthash].css'),
-      chunkFilename: path.posix.join('static', 'css/[name].[contenthash].async.css'),
+      filename: path.posix.join('assets', 'css/[name].[contenthash].css'),
+      chunkFilename: path.posix.join('assets', 'css/[name].[contenthash].async.css'),
     }),
 
     ...(configs.analyzer

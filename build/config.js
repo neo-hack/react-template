@@ -6,13 +6,11 @@ const Rupture = require('rupture')
 const context = path.resolve(__dirname, '../')
 const assets = path.resolve(context, 'src/assets')
 const project = path.resolve(context, 'src')
-const static = path.resolve(context, 'static')
 const output = path.resolve(context, 'dist')
 const public = path.resolve(context, 'public')
 
 const common = {
   path: {
-    static,
     assets,
     project,
     output,
