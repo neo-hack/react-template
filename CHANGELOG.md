@@ -1,5 +1,24 @@
 # @aiou/react-template
 
+## 3.0.0
+
+### Major Changes
+
+- 5d45e5f: deprecate node14
+
+### Minor Changes
+
+- 0e78ed5: enable webpack-cache
+- 0e78ed5: tsconfig paths alias
+- 0e78ed5: swc -> esbuild for better react-refresh
+- 0e78ed5: use tailwind cssgg plugin
+- 0e78ed5: minify with esbuild; use lightningcss postcss plugins;
+
+### Patch Changes
+
+- 0e78ed5: use webpack5 asset module
+- 0e78ed5: mv index.html to root
+
 ## 2.2.0
 
 ### Minor Changes
